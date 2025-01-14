@@ -20,7 +20,7 @@ const AdminDashboard = () => {
   }, []);
 
   return (
-    <Flex height={"40vh"} alignItems={"center"} direction={"column"}>
+    <Flex overflow={"hidden"} height={"40vh"} alignItems={"center"} direction={"column"}>
       <Flex
         gap={5}
         height={"100px"}

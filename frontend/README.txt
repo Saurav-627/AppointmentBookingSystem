@@ -1,14 +1,14 @@
 ============================================Student Details =======================================================================
-Name: Gaurav Thapaliya
-Student ID: 2059614
-Project name: Doctor Sahaab
+Name: Saurav Luitel
+Student ID: 024908
+Project name: Doctor Appointment Booking System
 ============================================Important Environment==================================================================
 Some of the important environment required to run or make changes in the project are:
 
 # MongoDB: Install MongoDB to set up the database server. 
 
 PORT = 3000
-CONNECT = mongodb+srv://Gaurav:Gorkha2023@cluster0.ozek6aa.mongodb.net/DAB?retryWrites=true&w=majority
+CONNECT = localhost
 
 # Node.js: Install Node.js to run JavaScript on the server-side. You can download the installer from the Node.js official website and follow the installation instructions for your specific operating system.
 
@@ -29,12 +29,10 @@ understanding of the concepts and principles behind each component of the stack 
 
 ============================================ How to run the code ========================================================================
 
-1. There is a zip folder provided named "doctor-sahab"
+1. There is a zip folder provided named "BCA Project"
 2. Extract it to your device
 3. Start the server side and client side of the program
 	- For this to happen, firstly you should make a connection to the backend in mongodb atlas
-	- Credentials of my college gmail id is required
-		gmail: np03cs4s210070@heraldcollege.edu.np
 4. After the connection is made you can use the system. The system has 3 roles
   - User  
   - Manager(Admin)
