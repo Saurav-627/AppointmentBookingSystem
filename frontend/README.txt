@@ -56,6 +56,6 @@ Submit a pull request, explaining your changes and their benefits.
 =========================================Contact======================================================================================
 
 Contact
-For any questions, issues, or suggestions, please contact @thapaliyagaurav1@gmail.com
+For any questions, issues, or suggestions, please contact luitelsaurav627@gmail.com
 
 ====================================== THANK YOU =====================================================================================
