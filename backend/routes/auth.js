@@ -21,8 +21,6 @@ router.post("/sendOTP", async (req, res) => {
     text: message,
   };
   try {
-    // comment this line if you don't want to send sms
-
     // const response = await axios.post(url, body);
     // const data = await response.data;
     // console.log(data);

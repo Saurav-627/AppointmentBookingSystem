@@ -51,8 +51,6 @@ const AddManager = () => {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
-  const [latitude, setLatitude] = useState("");
-  const [Longitude, setLongitude] = useState("");
   const [specialityData, setSpecialityData] = useState([]);
   const [doctor, setDoctor] = useState(true);
   const [doctorData, setDoctorData] = useState(null);
@@ -320,29 +318,6 @@ const AddManager = () => {
                   placeholder="Enter Address"
                   onChange={(e) => {
                     setAddress(e.target.value);
-                  }}
-                  required
-                />
-              </FormControl>
-            </HStack>
-            <HStack>
-              <FormControl isRequired>
-                <FormLabel> Latitude </FormLabel>
-                <Input
-                  onChange={(e) => {
-                    setLatitude(e.target.value);
-                  }}
-                  placeholder="Enter Location Latitude"
-                  required
-                />
-              </FormControl>
-
-              <FormControl mt={4} isRequired>
-                <FormLabel>Longitude</FormLabel>
-                <Input
-                  placeholder="Enter  Location Longitude"
-                  onChange={(e) => {
-                    setLongitude(e.target.value);
                   }}
                   required
                 />

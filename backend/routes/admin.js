@@ -6,7 +6,7 @@ const User = require("../model/User");
 const Discussion = require("../model/Discussion");
 
 router.post("/registerHospital", async (req, res) => {
-  const { name, phone, address, email, password, image, lat, long, city } =
+  const { name, phone, address, email, password, image, city } =
     req.body;
   console.log(req.body);
   if (
@@ -16,9 +16,7 @@ router.post("/registerHospital", async (req, res) => {
     !address ||
     !email ||
     !password ||
-    !image ||
-    !lat ||
-    !long
+    !image
   ) {
     return res.status(400).json({ msg: "Not all fields have been entered." });
   }
@@ -31,8 +29,6 @@ router.post("/registerHospital", async (req, res) => {
       password,
       image,
       city,
-      lat,
-      long,
     });
     await newHospital.save();
     return res.send({ message: "Registered Successfully" }).status(200);

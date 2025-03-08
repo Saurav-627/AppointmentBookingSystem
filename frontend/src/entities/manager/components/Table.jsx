@@ -702,8 +702,8 @@ const TableDoctor = () => {
         justifyContent="center"
         direction={"column"}
       >
-        <Flex my={50} w={"full"} justifyContent={"space-between"} gap={5}>
-          <Flex w={"full"} gap={2}>
+        <Flex my={50} w={"full"} justifyContent={"space-between"} wrap={"wrap"} gap={5}>
+          <Flex gap={2}>
             <Flex w={"250px"}>
               <Select
                 placeholder="Select option"

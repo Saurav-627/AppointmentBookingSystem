@@ -34,26 +34,41 @@ export default function ManagerLogin() {
   const [otp, setOtp] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isVerifying, setIsVerifying] = useState(false);
   const navigate = useNavigate();
   const toast = useToast();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("hello");
+    setIsSubmitting(true);
     const sentOtp = async () => {
-      const response = await fetch(
-        "http://localhost:3000/api/manager/sendOTP",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
+      try {
+        const response = await fetch(
+          "http://localhost:3000/api/manager/sendOTP",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email }),
+          }
+        );
+        const data = await response.json();
+        console.log("managerotp:", data);
+        if (data.otp) {
+          onOpen();
         }
-      );
-      const data = await response.json();
-      if (data.otp) {
-        onOpen();
+      } catch (error) {
+        toast({
+          title: "Error",
+          description: "Failed to send OTP.",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+      } finally {
+        setIsSubmitting(false);
       }
     };
     sentOtp();
@@ -61,7 +76,7 @@ export default function ManagerLogin() {
 
   const login = async (e) => {
     e.preventDefault();
-    console.log(otp);
+    setIsVerifying(true);
     try {
       const response = await fetch("http://localhost:3000/api/manager/login", {
         method: "POST",
@@ -71,18 +86,33 @@ export default function ManagerLogin() {
         body: JSON.stringify({ email, password, otp }),
       });
       const data = await response.json();
-      console.log(response,"dsaad");
-      console.log(data,"asudiu");
-      
+      console.log(data.otp);
+      console.log(response, "dsaad");
+      console.log(data, "asudiu");
 
       if (data.message === "Login Successful") {
         console.log(data.token);
+        toast({
+          title: "Login Successful.",
+          description: "Login Successful",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
         localStorage.setItem("manager", data.hospital._id);
         navigate("/manager");
       }
       if (data.message === "Invalid Credentials") {
         toast({
           title: "Invalid Credintials.",
+          description: "Unable to login",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+      } else if (data.message === "OTP Expired") {
+        toast({
+          title: "OTP Expired.",
           description: "Unable to login",
           status: "error",
           duration: 9000,
@@ -98,6 +128,8 @@ export default function ManagerLogin() {
         duration: 9000,
         isClosable: true,
       });
+    } finally {
+      setIsVerifying(false);
     }
   };
 
@@ -191,6 +223,7 @@ export default function ManagerLogin() {
                   _hover={{
                     bg: "green.400",
                   }}
+                  isLoading={isVerifying}
                 >
                   Verify
                 </Button>
@@ -250,6 +283,7 @@ export default function ManagerLogin() {
                 _hover={{
                   bg: "purple.500",
                 }}
+                isLoading={isSubmitting}
               >
                 Sign In
               </Button>
