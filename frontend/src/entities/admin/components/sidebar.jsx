@@ -15,6 +15,7 @@ import {
   Text,
   useDisclosure,
   Menu,
+  Image,
   MenuButton,
   MenuDivider,
   MenuItem,
@@ -32,7 +33,7 @@ import {
 } from "react-icons/fi";
 import { Outlet, NavLink } from "react-router-dom";
 import { AddIcon } from "@chakra-ui/icons";
-
+import logo from "../../../assets/logo.png";
 const LinkItems = [
   { name: "Home", icon: FiHome, path: "/admin" },
   { name: "Add Manager", icon: AddIcon, path: "/admin/addManager" },
@@ -84,9 +85,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
-        </Text>
+        <Image src={logo} w={"180px"} height={"80px"} />
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (

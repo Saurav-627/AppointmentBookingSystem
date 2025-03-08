@@ -574,8 +574,8 @@ const AddManager = () => {
         justifyContent="center"
         direction={"column"}
       >
-        <Flex my={50} w={"full"} justifyContent={"space-between"} gap={5}>
-          <Flex w={"full"} gap={2}>
+        <Flex my={50} w={"full"} justifyContent={"space-between"} flexWrap={"wrap"} gap={5}>
+          <Flex gap={2}>
             <Flex w={"700px"}>
               <InputGroup bg={"white"} rounded={"md"}>
                 <InputLeftElement
