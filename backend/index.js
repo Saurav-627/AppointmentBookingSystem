@@ -58,14 +58,27 @@ io.on("connection", (socket) => {
 const cors = require("cors");
 const { connect } = require("mongoose");
 const Notice = require("./model/Notice");
+const Admin = require("./model/Admin");
 app.use(json());
 app.use(cors());
 
 require("dotenv").config();
 
 // Connect to DB Mongo DB
-connect(process.env.CONNECT, () => {
+connect(process.env.CONNECT, async () => {
   console.log({ message: "Connected Succesfully" });
+  const existingAdmin = await Admin.findOne({ username: "admin@gmail.com" });
+  if (!existingAdmin) {
+    const newAdmin = new Admin({
+      username: "admin@gmail.com",
+      password: "admin",
+    });
+
+    await newAdmin.save();
+    console.log("Admin user created successfully!");
+  } else {
+    console.log("Admin user already exists!");
+  }
 });
 
 // Route MiddleWare

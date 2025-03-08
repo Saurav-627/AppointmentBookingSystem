@@ -48,14 +48,6 @@ const hospitalSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
-  lat: {
-    type: String,
-    required: true,
-  },
-  long: {
-    type: String,
-    required: true,
-  },
 });
 
 module.exports = mongoose.model("Hospital", hospitalSchema);

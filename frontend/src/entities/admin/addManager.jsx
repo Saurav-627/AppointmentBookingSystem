@@ -161,8 +161,6 @@ const AddManager = () => {
         phone: phone,
         address: address,
         email: email,
-        lat: latitude,
-        long: Longitude,
         image: data.secure_url,
         password: password,
         city: city,
@@ -499,35 +497,6 @@ const AddManager = () => {
                     setEditData((prev) => ({
                       ...prev,
                       address: e.target.value,
-                    }));
-                  }}
-                  required
-                />
-              </FormControl>
-            </HStack>
-            <HStack>
-              <FormControl isRequired>
-                <FormLabel> Latitude </FormLabel>
-                <Input
-                  onChange={(e) => {
-                    setEditData((prev) => ({
-                      ...prev,
-                      latitude: e.target.value,
-                    }));
-                  }}
-                  placeholder="Enter Location Latitude"
-                  required
-                />
-              </FormControl>
-
-              <FormControl mt={4} isRequired>
-                <FormLabel>Longitude</FormLabel>
-                <Input
-                  placeholder="Enter  Location Longitude"
-                  onChange={(e) => {
-                    setEditData((prev) => ({
-                      ...prev,
-                      longitude: e.target.value,
                     }));
                   }}
                   required

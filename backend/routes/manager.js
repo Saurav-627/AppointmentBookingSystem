@@ -385,9 +385,9 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ message: "Invalid OTP" });
     }
 
-    if (otp.expireAt > Date.now()) {
-      return res.status(400).json({ message: "OTP Expired" });
-    }
+    // if (otp.expireAt < Date.now()) {
+    //   return res.status(400).json({ message: "OTP Expired" });
+    // }
 
     return res
       .status(200)

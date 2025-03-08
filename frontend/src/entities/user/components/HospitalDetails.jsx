@@ -86,36 +86,6 @@ const HospitalDetails = (props) => {
               {props.details.phone}
             </chakra.h1>
           </Flex>
-          <Flex
-            alignItems="center"
-            mt={4}
-            color="gray.700"
-            _dark={{
-              color: "gray.200",
-            }}
-            flexDirection={"column"}
-          >
-            {isLoaded && (
-              <GoogleMap
-                mapContainerStyle={{
-                  width: "320px",
-                  height: "300px",
-                }}
-                center={{
-                  lat: parseFloat(props.details.latitude),
-                  lng: parseFloat(props.details.longitude),
-                }}
-                zoom={10}
-              >
-                <Marker
-                  position={{
-                    lat: parseFloat(props.details.latitude),
-                    lng: parseFloat(props.details.longitude),
-                  }}
-                />
-              </GoogleMap>
-            )}
-          </Flex>
         </Box>
       </Box>
     </Flex>
