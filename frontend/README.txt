@@ -35,23 +35,15 @@ understanding of the concepts and principles behind each component of the stack 
 	- For this to happen, firstly you should make a connection to the backend in mongodb atlas
 4. After the connection is made you can use the system. The system has 3 roles
   - User  
-  - Manager(Admin)
-  - Super Admin
+  - Manager(Hospital)
+  - Admin
 
 =========================================== Prerequisites ===============================================================================
-To run the Doctor Sahab application locally, you need to have the following software installed on your machine:
+To run the application locally, you need to have the following software installed on your machine:
 
 Node.js (v17.1.0 or higher)
 MongoDB (v 6.0 or higher)
 Text Editor or IDE (e.g., Visual Studio Code)   
-
-============================================Contributing==============================================================================
-If you'd like to contribute to the development of Doctor Sahab, please follow these steps:
-
-Fork the repository on GitHub.
-Create a new branch for your feature or bug fix.
-Commit your changes and push the branch to your fork.
-Submit a pull request, explaining your changes and their benefits.
 
 =========================================Contact======================================================================================
 
