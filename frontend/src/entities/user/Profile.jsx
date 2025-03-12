@@ -22,6 +22,8 @@ import {
 } from "@chakra-ui/react";
 import { BiImageAdd } from "react-icons/bi";
 import { useState, useEffect } from "react";
+import { DownloadIcon } from "@chakra-ui/icons";
+import axios from "axios";
 
 export default function UserProfileEdit(props) {
   const phone = localStorage.getItem("phone");
@@ -37,6 +39,7 @@ export default function UserProfileEdit(props) {
         `http://localhost:3000/api/user/data/${phoneNumber}`
       );
       const data = await response.json();
+      console.log("this is user", data);
       setUserData(data.user);
       localStorage.setItem("user", JSON.stringify(data.user));
     } catch (err) {
@@ -50,6 +53,7 @@ export default function UserProfileEdit(props) {
         `http://localhost:3000/api/user/getHistory/${phone}`
       );
       const data = await response.json();
+      console.log("doshod",data);
       if (data) {
         setHistory(data.history);
       }
@@ -112,6 +116,42 @@ export default function UserProfileEdit(props) {
         description: "Update Failed",
         status: "error",
         duration: 2000,
+      });
+    }
+  };
+
+  const downloadReport = async (appointmentId) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3000/api/user/appointment-report/${appointmentId}`,
+        {
+          responseType: "blob",
+        }
+      );
+
+      const blob = new Blob([response.data], { type: "application/pdf" });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `appointment_${appointmentId}.pdf`;
+      link.click();
+      window.URL.revokeObjectURL(url);
+
+      toast({
+        title: "Success",
+        description: "Report downloaded successfully",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      });
+    } catch (error) {
+      console.error("Error downloading report:", error);
+      toast({
+        title: "Error",
+        description: error.response?.data?.message || "Failed to download report",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
       });
     }
   };
@@ -298,6 +338,7 @@ export default function UserProfileEdit(props) {
                 <Th>Token Number</Th>
                 <Th>Amount Paid (Rs)</Th>
                 <Th>Status</Th>
+                <Th>Download Report</Th>
               </Tr>
             </Thead>
             <Tbody>
@@ -322,6 +363,16 @@ export default function UserProfileEdit(props) {
                       >
                         {item.status}
                       </Badge>
+                    </Td>
+                    <Td>
+                    {item.status === "Approved" && (
+                        <DownloadIcon
+                          boxSize={6}
+                          color="blue.500"
+                          cursor={"pointer"}
+                          onClick={() => downloadReport(item._id)}
+                        />
+                      )}
                     </Td>
                   </Tr>
                 );
