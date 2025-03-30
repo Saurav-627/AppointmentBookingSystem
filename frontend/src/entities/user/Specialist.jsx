@@ -721,6 +721,7 @@ const Specialist = () => {
                           onClick={() => {
                             cancelAppointment(item._id, phone, "Cancelled");
                           }}
+                          isDisabled={available.time === "00:00-00:00"}
                         >
                           Cancel Appointment
                         </Button>

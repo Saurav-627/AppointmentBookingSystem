@@ -1,0 +1,12 @@
+Deep-Chat Important to look at:
+1. Installation using cdn or npm.
+2. See Connect: {
+url,method,headers,handler,etc
+}
+url: something where request is send.
+method: http method
+handler: custom handler[body,signal]
+3.Styles
+4. Messages.
+5. history
+and more
